@@ -27,13 +27,12 @@ import 'assets/demo/demo.css';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 
 ReactDOM.render(
-  // <BrowserRouter>
-  <div>Test</div>,
-  //   <Switch>
-  //     <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
-  //     <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-  //     <Redirect to="/admin/dashboard" />
-  //   </Switch>
-  // </BrowserRouter>,
+  <BrowserRouter>
+    <Switch>
+      <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
+      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+      <Redirect to="/admin/dashboard" />
+    </Switch>
+  </BrowserRouter>,
   document.getElementById('root')
 );
