@@ -39,7 +39,7 @@
   "bugs": {
     "url": "https://github.com/creativetimofficial/ct-paper-dashboard-pro-react/issues"
   },
-  "homepage": "https://demos.creative-tim.com/paper-dashboard-pro-react/#/",
+  "homepage": "https://gpt-extension-front.vercel.app/",
   "dependencies": {
     "bootstrap": "4.6.0",
     "chart.js": "3.2.1",
