@@ -1,38 +1,25 @@
-/*!
-
-=========================================================
-* Paper Dashboard PRO React - v1.3.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-pro-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-
-import AuthLayout from 'layouts/Auth.js';
-import AdminLayout from 'layouts/Admin.js';
-
-import 'bootstrap/dist/css/bootstrap.css';
-import 'assets/scss/paper-dashboard.scss?v=1.3.0';
-import 'assets/demo/demo.css';
-import 'perfect-scrollbar/css/perfect-scrollbar.css';
+import './index.css';
+import App from './pages/App';
+import Login from './pages/Login';
+import Registration from './pages/Registration';
+import ErrorPage from './pages/ErrorPage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { GlobalProvider } from './contexts/GlobalContext';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
-      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-      <Redirect to="/admin/dashboard" />
-    </Switch>
-  </BrowserRouter>,
+  <React.StrictMode>
+    <GlobalProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Router>
+    </GlobalProvider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
