@@ -1,6 +1,7 @@
 import React from 'react';
 import SidebarItem from './SidebarItem/SidebarItem';
 import './Sidebar.css';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 const SIDEBAR_ANIMATION_DELAY = 0.2; // seconds
 
@@ -34,3 +35,6 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+
+

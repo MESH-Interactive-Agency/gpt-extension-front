@@ -11,3 +11,4 @@ const SidebarItem = ({ text, delay = 0 }) => (
 );
 
 export default SidebarItem;
+
