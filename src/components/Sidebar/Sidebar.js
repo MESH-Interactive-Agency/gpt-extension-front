@@ -2,7 +2,7 @@ import React from 'react';
 import SidebarItem from './SidebarItem/SidebarItem';
 import './Sidebar.css';
 
-const SIDEBAR_ANIMATION_DELAY = 0.25; // seconds
+const SIDEBAR_ANIMATION_DELAY = 0.2; // seconds
 
 const Sidebar = () => {
   const conversations = [
@@ -26,7 +26,7 @@ const Sidebar = () => {
         <SidebarItem
           key={i}
           text={conversation}
-          delay={SIDEBAR_ANIMATION_DELAY + i * 0.2}
+          delay={i * 0.2 + SIDEBAR_ANIMATION_DELAY}
         />
       ))}
     </div>
