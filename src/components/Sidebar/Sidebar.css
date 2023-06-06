@@ -1,0 +1,16 @@
+/* Adjust the values as needed */
+.sidebar {
+  height: 100vh;
+  background-color: #202123;
+  overflow: auto;
+  position: fixed;
+  color: #cbecf1;
+  width: 250px; /* adjust to your preference */
+  /* add more styles as needed */
+}
+
+.sidebar {
+  /* your existing styles */
+  animation: slideInFromLeft 0.5s forwards;
+  animation-delay: 0.2s;
+}

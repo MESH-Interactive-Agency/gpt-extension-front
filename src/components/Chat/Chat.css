@@ -1,0 +1,20 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 50px); /* height of the viewport minus the height of your navbar if any */
+  width: calc(100vw - 250px); /* width of the viewport minus the width of your sidebar */
+  background-color: #353740;
+  color: #F5F5F5; /* off-white color */
+  position: absolute;
+  right: 0;
+}
+
+.chat-output {
+  flex-grow: 1; /* allows it to take up remaining space */
+  overflow: auto; /* for scrolling when the content overflows */
+}
+
+.chat-input {
+  height: 100px;
+  background-color: #353740;
+}

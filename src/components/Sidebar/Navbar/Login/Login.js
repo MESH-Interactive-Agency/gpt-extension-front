@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../contexts/GlobalContext';
-import '../css/Login.css';
-import StaggeredAnimationWrapper from '../components/StaggeredAnimationWrapper';
+import { GlobalContext } from '../../../../contexts/GlobalContext';
+import './Login.css';
+import StaggeredAnimationWrapper from '../../../StaggeredAnimationWrapper';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {

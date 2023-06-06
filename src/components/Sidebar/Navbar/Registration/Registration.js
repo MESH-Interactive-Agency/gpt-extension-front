@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "../contexts/GlobalContext";
+import { GlobalContext } from "../../../../contexts/GlobalContext";
+import "./Registration.css"
 
 function Registration() {
   const { registerUser } = useContext(GlobalContext);
