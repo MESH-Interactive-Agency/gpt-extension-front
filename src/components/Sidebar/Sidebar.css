@@ -1,9 +1,0 @@
-/* Adjust the values as needed */
-.sidebar {
-  height: 100vh;
-  background-color: #202123;
-  color: #cbecf1;
-  width: 250px;
-  animation: slideInFromLeft 0.5s forwards;
-  animation-delay: 0.2s;
-}

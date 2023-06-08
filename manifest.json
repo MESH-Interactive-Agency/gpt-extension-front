@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT Conversation Organizer",
+  "description": "This extension allows you to organize your ChatGPT conversations",
+  "version": "1.0",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+      "default_popup": "popup.html"
+  },
+  "background": {
+      "service_worker": "background.js"
+  },
+  "content_scripts": [
+      {
+          "matches": ["*://chat.openai.com/*"],
+          "js": ["content.js"]
+      }
+  ]
+}

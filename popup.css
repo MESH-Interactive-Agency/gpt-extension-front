@@ -1,0 +1,17 @@
+.folder {
+  border: 1px solid gray;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.folder-name {
+  font-weight: bold;
+}
+.conversation {
+  margin-left: 20px;
+}
+.folder .conversation {
+  display: none;
+}
+.folder.open .conversation {
+  display: block;
+}
