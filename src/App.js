@@ -1,44 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './css/App.css';
 
-function App() {
+const App = () => {
   const [conversationNames, setConversationNames] = useState([]);
 
-  useEffect(() => {
-    // This script will be injected into the active tab and will execute there, reading the DOM.
-    const scriptContent = `
-      const conversationElements = document.querySelectorAll('.flex-1.text-ellipsis.max-h-5.overflow-hidden.break-all.relative');
-      const conversationNames = Array.from(conversationElements).map(element => element.textContent);
-      conversationNames;
-    `;
-
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      const activeTab = tabs[0];
-
-      chrome.tabs.executeScript(
-        activeTab.id,
-        { code: scriptContent },
-        (results) => {
-          if (chrome.runtime.lastError) {
-            console.log(chrome.runtime.lastError);
-          } else {
-            setConversationNames(results[0]);
-          }
+  const getConversations = () => {
+    window.chrome.runtime.sendMessage(
+      { message: 'get_conversations' },
+      function (response) {
+        console.log(response); // log the response to the console
+        if (response && response.data) {
+          setConversationNames(response.data);
+        } else {
+          console.error('Failed to fetch conversation names');
         }
-      );
-    });
-  }, []);
+      }
+    );
+  };
 
   return (
     <div className="App">
-      <h1>Conversation Names:</h1>
-      <ul>
-        {conversationNames.map((name, index) => (
-          <li key={index}>{name}</li>
-        ))}
-      </ul>
+      <header className="App-header">
+        <p>Conversation Names:</p>
+        <button onClick={getConversations}>Fetch Conversations</button>
+        <ul>
+          {conversationNames.map((name, index) => (
+            <li key={index}>{name}</li>
+          ))}
+        </ul>
+      </header>
     </div>
   );
-}
+};
 
 export default App;
