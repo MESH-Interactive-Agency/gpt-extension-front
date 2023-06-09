@@ -19,8 +19,11 @@ function App() {
         activeTab.id,
         { code: scriptContent },
         (results) => {
-          // The result of the script is the last expression evaluated, in this case 'conversationNames'.
-          setConversationNames(results[0]);
+          if (chrome.runtime.lastError) {
+            console.log(chrome.runtime.lastError);
+          } else {
+            setConversationNames(results[0]);
+          }
         }
       );
     });
