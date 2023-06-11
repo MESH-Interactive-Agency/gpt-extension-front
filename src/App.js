@@ -1,36 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import './css/App.css';
+import Conversation from './components/Conversation';
 
-const App = () => {
-  const [conversationNames, setConversationNames] = useState([]);
+function App() {
+  const [conversations, setConversations] = useState([]);
 
-  const getConversations = () => {
+  const fetchConversations = () => {
     window.chrome.runtime.sendMessage(
-      { message: 'get_conversations' },
-      function (response) {
-        console.log(response); // log the response to the console
-        if (response && response.data) {
-          setConversationNames(response.data);
-        } else {
-          console.error('Failed to fetch conversation names');
+      {
+        message: 'fetch_conversations',
+      },
+      (response) => {
+        if (response.message === 'fetch_conversations_success') {
+          setConversations(response.data);
         }
       }
     );
   };
 
+  useEffect(() => {
+    fetchConversations();
+    window.chrome.runtime.onMessage.addListener(
+      (request, sender, sendResponse) => {
+        if (request.message === 'fetch_conversations_success') {
+          setConversations(request.data);
+        }
+      }
+    );
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Conversation Names:</p>
-        <button onClick={getConversations}>Fetch Conversations</button>
-        <ul>
-          {conversationNames.map((name, index) => (
-            <li key={index}>{name}</li>
-          ))}
-        </ul>
-      </header>
+      <h1>Conversations</h1>
+      {conversations.map((conversation, index) => (
+        <Conversation key={index} name={conversation.name} index={index} />
+      ))}
+      <button onClick={fetchConversations}>Refresh</button>
     </div>
   );
-};
+}
 
 export default App;

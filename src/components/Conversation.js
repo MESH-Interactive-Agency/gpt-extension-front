@@ -1,12 +1,19 @@
 import React from 'react';
 
-function Conversation({ data }) {
-  return (
-    <div>
-      <h2>{data.name}</h2>
-      {/* Add more conversation details as needed */}
-    </div>
-  );
-}
+const Conversation = ({ name, index }) => {
+  const handleClick = () => {
+    window.chrome.runtime.sendMessage(
+      {
+        message: 'activate_conversation',
+        index: index,
+      },
+      (response) => {
+        console.log(response);
+      }
+    );
+  };
+
+  return <button onClick={handleClick}>{name}</button>;
+};
 
 export default Conversation;
